@@ -1,0 +1,65 @@
+/*
+	Author: Hebron George
+	Created Date: April 10, 2014
+	Last Updated: April 10, 2014
+*/
+
+/**
+ * Global variable containing the location we would like to pass to forecast.io.
+ *
+ * @type {Array.<string>}
+ */
+
+ var lat_long = new Array('28.077403', '-82.444209');
+
+/**
+ * Global variable containing our api key for forecast.io.
+ *
+ * @type {string}
+ */
+ var api_key = '01c7f722bde2c6222909824390a66d45';
+
+ var weatherGenerator = {
+ 	/**
+ 	 * Forecast.io URL that will give us the weather data we're looking for.
+ 	 *
+ 	 * See https://developer.forecast.io/docs/v2 for details about construction
+ 	 * of this url
+ 	 *
+ 	 * @type {string}
+ 	 * @private
+ 	 */
+ 	searchOnForecastIO_: 'https://api.forecast.io/forecast/' + api_key + '/' +
+ 	encodeURIComponent(lat_long[0]) + ',' +
+ 	encodeURIComponent(lat_long[1]),
+
+ 	/**
+ 	 * Sends an XHR GET request to grab info from forecast.io. The XHR's
+ 	 * 'onload' event is hooks up to the 'showWeather_' method.
+ 	 *
+ 	 * @public
+ 	 */
+ 	requestWeather: function(){
+ 		var req = new XMLHttpRequest();
+ 		req.open("GET", this.searchOnForecastIO_, true);
+ 		req.onload = this.showWeather_.bind(this);
+ 		req.send(null);
+ 	},
+
+ 	/**
+ 	 * Handle the 'onload' event of our weather XHR request, generated in
+ 	 * 'requestWeather', by generating 'div' elements, and stuffing them into
+ 	 * the document for display
+ 	 *
+ 	 * @param {ProgressEvent} e The XHR ProgressEvent.
+ 	 * @private
+ 	 */
+ 	showWeather_: function (e) {
+ 		console.log(e.target.responseText);
+ 	}
+ }
+
+ // Run weather generation script as soon as the DOM loads.
+ document.addEventListener('DOMContentLoaded', function(){
+ 	weatherGenerator.requestWeather();
+ });
