@@ -1,11 +1,10 @@
 {
 	"manifest_version": 2,
-	"name": "One-click Kittens",
-	"description": "This extension demonstrates a browser action with kittens.",
+	"name": "WeatherApp",
+	"description": "This is an easy to use Chrome plugin to get personalized weather information for multiple zip-codes/cities.",
 	"version": "1.0",
 
 	"permissions": [
-		"https://secure.flickr.com/",
 		"https://api.forecast.io/*",
 		"tabs"
 	],
