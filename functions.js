@@ -55,7 +55,19 @@
  	 * @private
  	 */
  	showWeather_: function (e) {
- 		console.log(e.target.responseText);
+ 		var myJSONObject = JSON.parse(e.target.responseText);
+
+ 		var divTemp = document.createElement('div');
+ 		divTemp.setAttribute('id', 'temp');
+ 		var temp = document.createElement('p');
+ 		temp.innerHTML = 'Current Temp: ' + myJSONObject.currently.temperature;
+ 		var summary = document.createElement('p');
+ 		summary.innerHTML = 'Summary: ' + myJSONObject.currently.summary;
+
+
+ 		divTemp.appendChild(temp);
+ 		divTemp.appendChild(summary);
+ 		document.getElementById('zip_codes').appendChild(divTemp);
  	}
  }
 
