@@ -2,6 +2,8 @@
 	Author: Hebron George
 	Created Date: April 10, 2014
 	Last Updated: April 10, 2014
+	
+	Second Author: Mahmoud Ibrahim  **Adding few function, and editting some
 */
 
 /**
@@ -9,7 +11,10 @@
  *
  * @type {Array.<string>}
  */
-
+/** 
+ * Geolcation functionality:
+ * the following block will 
+ */
  var lat_long = new Array('28.077403', '-82.444209');
 
 /**
