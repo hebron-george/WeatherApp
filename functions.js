@@ -11,12 +11,27 @@
  *
  * @type {Array.<string>}
  */
-/** 
- * Geolcation functionality:
- * the following block will 
- */
- var lat_long = new Array('28.077403', '-82.444209');
-
+ //the array is initialized to +0° 0' 0",+0° 0' 0"
+  var lat_long = new Array('0.0', '0.0');
+ 
+ if ("geolocation" in navigator) {
+  /* geolocation is available */
+  /*
+    navigator retrieve the GPS (in dismal) location.
+    then we reset the latitude_longitude array with the appropriate values
+  */
+  navigator.geolocation.getCurrentPosition(function(position) {
+  lat_long[0] = position.coords.latitude;
+  lat_long[1] = position.coords.longitude;
+}, geo_error);
+} else {
+  /* geolocation IS NOT available */
+  document.writeln("Geolocation is NOT available.");
+}
+/*In case Geolocation can't find a GPS*/
+function geo_error(){
+ document.writelin("Sorry, no position available.");
+}
 /**
  * Global variable containing our api key for forecast.io.
  *
